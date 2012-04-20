@@ -12,6 +12,12 @@
 {
     IBOutlet SuperBadge *smallCircleBadge;
     IBOutlet SuperBadge *largeCircleBadge;
+    IBOutlet SuperBadge *smallRectBadge;
+
+    IBOutlet SuperBadge *largeRectBadge;
+    IBOutlet SuperBadge *hugeBadge;
+    
 }
+
 
 @end

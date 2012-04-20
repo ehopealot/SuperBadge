@@ -16,8 +16,8 @@
 
 @property (nonatomic, copy) NSString *text;
 
-@property (nonatomic, retain) UIColor *backgroundColor; // Default is [UIColor RedColor]
-@property (nonatomic, retain) UIColor *borderColor; // Default is [UIColor WhiteColor]
+@property (nonatomic, retain) UIColor *badgeBackgroundColor; // Default is [UIColor RedColor]
+@property (nonatomic, retain) UIColor *badgeBorderColor; // Default is [UIColor WhiteColor]
 
 @property (nonatomic) BOOL hasShadow; // Default is YES
 @property (nonatomic) BOOL hasBorder; // Default is YES

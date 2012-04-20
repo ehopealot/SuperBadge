@@ -23,12 +23,11 @@
         self.clipsToBounds = YES;
         self.backgroundColor = [UIColor redColor];
         self.textColor = [UIColor whiteColor];
-        self.font = [UIFont boldSystemFontOfSize:11.0f];
         self.textAlignment = UITextAlignmentCenter;
         self.layer.cornerRadius = self.frame.size.height/2;
         self.layer.borderColor = [UIColor whiteColor].CGColor;
-        self.layer.borderWidth = 2.0f;
-        self.layer.cornerRadius = self.frame.size.width/2;
+        self.layer.borderWidth = self.frame.size.height/10.0f;
+        self.layer.cornerRadius = self.frame.size.height/2;
     }
     return self;
 }
@@ -42,7 +41,7 @@
     CGColorSpaceRef rgbColorspace;
     size_t num_locations = 2;
     CGFloat locations[2] = { 0.0, 1.0 };
-    CGFloat components[8] = { 1.0, 1.0, 1.0, 0.75,  // Start color
+    CGFloat components[8] = { 1.0, 1.0, 1.0, 1.0,  // Start color
         1.0, 1.0, 1.0, 0.06 }; // End color
     
     rgbColorspace = CGColorSpaceCreateDeviceRGB();
@@ -76,7 +75,7 @@
     CGFloat originalWidth;
 }
 
-@synthesize backgroundColor, borderColor, hasBorder, hasShadow;
+@synthesize badgeBackgroundColor, badgeBorderColor, hasBorder, hasShadow;
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -102,7 +101,18 @@
     self.layer.shouldRasterize = YES;
     UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:self.layer.bounds cornerRadius:self.layer.cornerRadius];
     self.layer.shadowPath = path.CGPath;
+}
 
+- (void)setBadgeBorderColor:(UIColor *)theBorderColor
+{
+    badge.layer.borderColor = theBorderColor.CGColor;
+    badgeBorderColor = theBorderColor;
+}
+
+- (void)setBadgeBackgroundColor:(UIColor *)theBackgroundColor
+{
+    badge.backgroundColor = theBackgroundColor;
+    badgeBackgroundColor = theBackgroundColor;
 }
 
 - (void)awakeFromNib
@@ -117,12 +127,30 @@
 - (void)setText:(NSString *)text
 {
     CGRect myFrame = self.frame;
-    myFrame.size.width = originalWidth + (originalWidth/4) * (text.length-1);
+
+    [badge setText:text];
+    
+    CGSize constrainingSize = CGSizeMake(MAXFLOAT, MAXFLOAT);
+    CGSize textSize;
+    for (int i = 300; i > 5; i--){
+        badge.font = [UIFont boldSystemFontOfSize:i];
+        textSize = [badge.text sizeWithFont:badge.font constrainedToSize:constrainingSize
+                                lineBreakMode:UILineBreakModeWordWrap];
+        if (textSize.height <= badge.frame.size.height*7.0f/10.0f){
+            break;
+        }
+    }
+    
+    if (text.length <= 1){
+        myFrame.size.width = originalWidth;
+    } else {
+        myFrame.size.width = textSize.width + originalWidth;
+    }
     self.frame = myFrame;
     UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:self.layer.bounds cornerRadius:self.layer.cornerRadius];
     self.layer.shadowPath = path.CGPath;
     badge.frame = self.bounds;
-    [badge setText:text];
+
 }
 
 @end
