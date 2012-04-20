@@ -10,46 +10,31 @@
 #import <QuartzCore/QuartzCore.h>
 
 
-// SuperBadgeLabel is a utility class. It is the implementation of the label
-// that displays the SuperBadge's text and the custom drawRect method which
-// adds the gradient effect
-@interface SuperBadgeLabel : UILabel
+@interface GradientLayerDelegate : NSObject
 
 @property (nonatomic) BOOL hasGloss;
+
 @end
 
-@implementation SuperBadgeLabel
+@implementation GradientLayerDelegate
+
 @synthesize hasGloss;
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-        self.clipsToBounds = YES;
-        self.textAlignment = UITextAlignmentCenter;
-    }
-    return self;
-}
 
-// The gradient drawing code comes from this 
-// StackOverflow answer: http://stackoverflow.com/a/422208
-- (void)drawRect:(CGRect)rect 
+- (void)drawLayer:(CALayer *)layer inContext:(CGContextRef)currentContext
 {
     if (hasGloss){
-        CGContextRef currentContext = UIGraphicsGetCurrentContext();
-        
         CGGradientRef glossGradient;
         CGColorSpaceRef rgbColorspace;
         size_t num_locations = 2;
         CGFloat locations[2] = { 0.0, 1.0 };
-        CGFloat components[8] = { 1.0, 1.0, 1.0, 1.0,  // Start color
+        CGFloat components[8] = { 1.0, 1.0, 1.0, .75,  // Start color
             1.0, 1.0, 1.0, 0.06 }; // End color
         
         rgbColorspace = CGColorSpaceCreateDeviceRGB();
         glossGradient = CGGradientCreateWithColorComponents(rgbColorspace, components, locations, num_locations);
         
-        CGRect currentBounds = self.bounds;
+        CGRect currentBounds = layer.bounds;
         CGPoint topCenter = CGPointMake(CGRectGetMidX(currentBounds), 0.0f);
         CGPoint midCenter = CGPointMake(CGRectGetMidX(currentBounds), CGRectGetMaxY(currentBounds));
         CGContextDrawLinearGradient(currentContext, glossGradient, topCenter, midCenter, 0);
@@ -57,8 +42,6 @@
         CGGradientRelease(glossGradient);
         CGColorSpaceRelease(rgbColorspace); 
     }
-    [super drawRect:rect];
-    
 }
 
 
@@ -74,7 +57,9 @@
 
 @implementation SuperBadge
 {
-    SuperBadgeLabel *badge;
+    CALayer *gradient;
+    CALayer *borderLayer;
+    GradientLayerDelegate *gradientDrawer;
 }
 
 @synthesize badgeBackgroundColor, badgeBorderColor, hasBorder, hasShadow, hasGloss,
@@ -108,51 +93,70 @@ badgeTextColor;
     hasShadow = YES;
     badgeBorderColor = [UIColor whiteColor];
     badgeBackgroundColor = [UIColor redColor];
+    
+    borderLayer = [[CALayer alloc] init];
+    borderLayer.frame = CGRectInset(self.bounds, -1, -1);
+    borderLayer.masksToBounds = YES;
+    borderLayer.backgroundColor = [UIColor clearColor].CGColor;
 
+    gradient = [[CALayer alloc] init];
+    gradientDrawer = [[GradientLayerDelegate alloc] init];
+    gradientDrawer.hasGloss = YES;
+    gradient.delegate = gradientDrawer;
+    gradient.masksToBounds = YES;
+    gradient.frame = borderLayer.frame;
+    gradient.backgroundColor = [UIColor clearColor].CGColor;
+
+    
+    self.textAlignment = UITextAlignmentCenter;
+    self.autoresizesSubviews = YES;
+    self.clipsToBounds = NO;
+    self.backgroundColor = [UIColor clearColor];
+    self.userInteractionEnabled = NO;
+    self.layer.shadowColor = [UIColor blackColor].CGColor;
+    [self.layer addSublayer:borderLayer];
+    [self.layer addSublayer:gradient];
+    self.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
 }
+
 
 - (void)setUp
 {
-    if (!badge){
-        badge = [[SuperBadgeLabel alloc] initWithFrame:self.bounds];
-        [self addSubview:badge];
-    }
-    badge.backgroundColor = badgeBackgroundColor;
-    badge.textColor = badgeTextColor;
-    badge.hasGloss = hasGloss;
-    badge.layer.borderWidth = hasBorder ? MAX(1.0f, floorf(self.frame.size.height/10)) : 0.0f;
-    badge.layer.borderColor = badgeBorderColor.CGColor;
-    badge.layer.cornerRadius = self.frame.size.height/2;
-//
-    self.backgroundColor = [UIColor clearColor];
-    self.layer.cornerRadius = self.frame.size.width/2;
-    self.clipsToBounds = NO;
-    self.layer.shadowRadius = MAX(1.0f, ceilf(self.frame.size.height/20.0f));
-    self.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.textColor = badgeTextColor;
+    self.layer.backgroundColor = badgeBackgroundColor.CGColor;
+    self.layer.cornerRadius = self.frame.size.height/2;
+    self.layer.shadowRadius = ceilf(gradient.frame.size.height/20.0f);
     self.layer.shadowOpacity = hasShadow ? 0.5f : 0.0f;
-    self.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
-    self.userInteractionEnabled = NO;
-    self.layer.shouldRasterize = YES;
-    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:self.layer.bounds cornerRadius:self.layer.cornerRadius];
+    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:gradient.frame cornerRadius:self.layer.cornerRadius];
     self.layer.shadowPath = path.CGPath;
+    
+    borderLayer.borderWidth = hasBorder ? MAX(2.0f, floorf(self.frame.size.height/10)) : 0.0f;
+    borderLayer.frame = hasBorder ? CGRectInset(self.bounds, 1 - borderLayer.borderWidth, 
+                                                1 - borderLayer.borderWidth) : self.bounds;
+    borderLayer.borderColor = badgeBorderColor.CGColor;
+    borderLayer.cornerRadius = borderLayer.frame.size.height/2;
+    
+    gradient.frame = borderLayer.frame;
+    gradient.cornerRadius = borderLayer.cornerRadius;
+    [gradient setNeedsDisplay];
 }
 
 - (void)setBadgeBorderColor:(UIColor *)theBorderColor
 {
-    badge.layer.borderColor = theBorderColor.CGColor;
+    borderLayer.borderColor = theBorderColor.CGColor;
     badgeBorderColor = theBorderColor;
 }
 
 - (void)setBadgeBackgroundColor:(UIColor *)theBackgroundColor
 {
-    badge.backgroundColor = theBackgroundColor;
+    self.layer.backgroundColor = theBackgroundColor.CGColor;
     badgeBackgroundColor = theBackgroundColor;
 }
 
 - (void)setHasBorder:(BOOL)hasBorderValue
 {
     hasBorder = hasBorderValue;
-    badge.layer.borderWidth = hasBorder ? 2.0f : 0.0f;
+    borderLayer.borderWidth = hasBorder ? 2.0f : 0.0f;
 }
 
 - (void)setHasShadow:(BOOL)hasShadowValue
@@ -164,14 +168,14 @@ badgeTextColor;
 - (void)setHasGloss:(BOOL)hasGlossValue
 {
     hasGloss = hasGlossValue;
-    badge.hasGloss = hasGloss;
-    [badge setNeedsDisplay];
+    gradientDrawer.hasGloss = hasGloss;
+    [gradient setNeedsDisplay];
 }
 
 - (void)setBadgeTextColor:(UIColor *)theBadgeTextColor
 {
     badgeTextColor = theBadgeTextColor;
-    badge.textColor = badgeTextColor;
+    self.textColor = badgeTextColor;
 }
 
 
@@ -179,10 +183,6 @@ badgeTextColor;
 {
     [self setDefaults];
     [self setUp];
-}
-
-- (NSString*) text{
-    return badge.text;
 }
 
 - (void)setFrame:(CGRect)frame
@@ -196,13 +196,11 @@ badgeTextColor;
 - (void)setText:(NSString *)text
 {
     CGRect myFrame = self.frame;
-
-    [badge setText:text];
-    
+    [super setText:text];
 
     // If there's just one letter in the badge display
     // as a circle
-    if (text.length <= 1){
+    if (text.length < 1){
         myFrame.size.width = myFrame.size.height;
     } else {
         CGSize constrainingSize = CGSizeMake(MAXFLOAT, MAXFLOAT);
@@ -210,21 +208,22 @@ badgeTextColor;
         
         // Determines what size the label needs to be based on the constraint
         // that the text in the label should be 70% the height of the badge
-        for (int i = 300; i > 5; i--){
-            badge.font = [UIFont boldSystemFontOfSize:i];
-            textSize = [badge.text sizeWithFont:badge.font constrainedToSize:constrainingSize
+        for (int i = 100; i > 5; i--){
+            self.font = [UIFont boldSystemFontOfSize:i];
+            textSize = [self.text sizeWithFont:self.font constrainedToSize:constrainingSize
                                   lineBreakMode:UILineBreakModeWordWrap];
-            if (textSize.height <= badge.frame.size.height*.7f){
+            if (textSize.height <= self.frame.size.height*.8f){
                 break;
             }
         }
-        myFrame.size.width = textSize.width + myFrame.size.height*.7f;
+        if (text.length == 1){
+            myFrame.size.width = myFrame.size.height;
+        } else {
+            myFrame.size.width = textSize.width + myFrame.size.height*.7f;
+        }
     }
     [super setFrame:myFrame];
     // Adjust the shadow to fit the new frame
-    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:self.layer.bounds cornerRadius:self.layer.cornerRadius];
-    self.layer.shadowPath = path.CGPath;
-    badge.frame = self.bounds;
+    [self setUp];
 }
-
 @end

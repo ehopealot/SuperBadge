@@ -12,9 +12,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SuperBadge : UIView
-
-@property (nonatomic, copy) NSString *text; 
+@interface SuperBadge : UILabel
 
 @property (nonatomic, retain) UIColor *badgeBackgroundColor; // Default is [UIColor RedColor]
 @property (nonatomic, retain) UIColor *badgeBorderColor; // Default is [UIColor WhiteColor]

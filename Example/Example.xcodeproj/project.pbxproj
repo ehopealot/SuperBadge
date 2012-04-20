@@ -17,6 +17,7 @@
 		1B27907F1540FFE50096FB10 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B27907D1540FFE50096FB10 /* ViewController.xib */; };
 		1B2790871541001F0096FB10 /* SuperBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B2790861541001F0096FB10 /* SuperBadge.m */; };
 		1B279089154102550096FB10 /* cat.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B279088154102550096FB10 /* cat.jpg */; };
+		1B2790901541BEAB0096FB10 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B27908F1541BEAB0096FB10 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		1B2790851541001F0096FB10 /* SuperBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SuperBadge.h; path = ../SuperBadge/SuperBadge.h; sourceTree = "<group>"; };
 		1B2790861541001F0096FB10 /* SuperBadge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SuperBadge.m; path = ../SuperBadge/SuperBadge.m; sourceTree = "<group>"; };
 		1B279088154102550096FB10 /* cat.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cat.jpg; sourceTree = "<group>"; };
+		1B27908F1541BEAB0096FB10 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B2790901541BEAB0096FB10 /* QuartzCore.framework in Frameworks */,
 				1B2790691540FFE50096FB10 /* UIKit.framework in Frameworks */,
 				1B27906B1540FFE50096FB10 /* Foundation.framework in Frameworks */,
 				1B27906D1540FFE50096FB10 /* CoreGraphics.framework in Frameworks */,
@@ -55,6 +58,7 @@
 		1B2790591540FFE50096FB10 = {
 			isa = PBXGroup;
 			children = (
+				1B27908F1541BEAB0096FB10 /* QuartzCore.framework */,
 				1B27908A15410C6D0096FB10 /* SuperBadge */,
 				1B27906E1540FFE50096FB10 /* Example */,
 				1B2790671540FFE50096FB10 /* Frameworks */,

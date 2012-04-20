@@ -26,6 +26,7 @@
     largeCircleBadge.badgeBorderColor = [UIColor purpleColor];
     smallRectBadge.text = @"12";
     largeRectBadge.text = @"123";
+    largeRectBadge.badgeBorderColor = [UIColor blackColor];
     hugeBadge.text = @"Really Long Text in this Badge";
     hugeBadge.badgeBorderColor = [UIColor greenColor];
     hugeBadge.badgeBackgroundColor = [UIColor magentaColor];
@@ -40,9 +41,22 @@
     // Release any retained subviews of the main view.
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    largeRectBadge.hasShadow = NO;
+    [UIView animateWithDuration:.5 delay:2.0 options:0 animations:^{
+        largeCircleBadge.center = CGPointMake(largeCircleBadge.center.x+50, 
+                                              largeCircleBadge.center.y+50);
+        largeRectBadge.text = @"123456";
+    } completion:^(BOOL finished) {
+    }];
+    
+
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return YES;
+    return NO;
 }
 
 @end
