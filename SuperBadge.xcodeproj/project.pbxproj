@@ -1,0 +1,283 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1B2790391540FF0A0096FB10 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B2790381540FF0A0096FB10 /* UIKit.framework */; };
+		1B27903B1540FF0A0096FB10 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B27903A1540FF0A0096FB10 /* Foundation.framework */; };
+		1B27903D1540FF0A0096FB10 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B27903C1540FF0A0096FB10 /* CoreGraphics.framework */; };
+		1B2790431540FF0A0096FB10 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1B2790411540FF0A0096FB10 /* InfoPlist.strings */; };
+		1B2790451540FF0A0096FB10 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B2790441540FF0A0096FB10 /* main.m */; };
+		1B2790491540FF0A0096FB10 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B2790481540FF0A0096FB10 /* AppDelegate.m */; };
+		1B27904C1540FF0B0096FB10 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B27904B1540FF0B0096FB10 /* ViewController.m */; };
+		1B27904F1540FF0B0096FB10 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B27904D1540FF0B0096FB10 /* ViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1B2790341540FF0A0096FB10 /* SuperBadge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuperBadge.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B2790381540FF0A0096FB10 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		1B27903A1540FF0A0096FB10 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1B27903C1540FF0A0096FB10 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		1B2790401540FF0A0096FB10 /* SuperBadge-Info.plist */ = {isa = PBXFileReference; path = "SuperBadge-Info.plist"; sourceTree = "<group>"; };
+		1B2790421540FF0A0096FB10 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1B2790441540FF0A0096FB10 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1B2790461540FF0A0096FB10 /* SuperBadge-Prefix.pch */ = {isa = PBXFileReference; path = "SuperBadge-Prefix.pch"; sourceTree = "<group>"; };
+		1B2790471540FF0A0096FB10 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		1B2790481540FF0A0096FB10 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		1B27904A1540FF0B0096FB10 /* ViewController.h */ = {isa = PBXFileReference; path = ViewController.h; sourceTree = "<group>"; };
+		1B27904B1540FF0B0096FB10 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		1B27904E1540FF0B0096FB10 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1B2790311540FF0A0096FB10 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B2790391540FF0A0096FB10 /* UIKit.framework in Frameworks */,
+				1B27903B1540FF0A0096FB10 /* Foundation.framework in Frameworks */,
+				1B27903D1540FF0A0096FB10 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1B2790291540FF0A0096FB10 = {
+			isa = PBXGroup;
+			children = (
+				1B27903E1540FF0A0096FB10 /* SuperBadge */,
+				1B2790371540FF0A0096FB10 /* Frameworks */,
+				1B2790351540FF0A0096FB10 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1B2790351540FF0A0096FB10 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1B2790341540FF0A0096FB10 /* SuperBadge.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1B2790371540FF0A0096FB10 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1B2790381540FF0A0096FB10 /* UIKit.framework */,
+				1B27903A1540FF0A0096FB10 /* Foundation.framework */,
+				1B27903C1540FF0A0096FB10 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1B27903E1540FF0A0096FB10 /* SuperBadge */ = {
+			isa = PBXGroup;
+			children = (
+				1B2790471540FF0A0096FB10 /* AppDelegate.h */,
+				1B2790481540FF0A0096FB10 /* AppDelegate.m */,
+				1B27904A1540FF0B0096FB10 /* ViewController.h */,
+				1B27904B1540FF0B0096FB10 /* ViewController.m */,
+				1B27904D1540FF0B0096FB10 /* ViewController.xib */,
+				1B27903F1540FF0A0096FB10 /* Supporting Files */,
+			);
+			path = SuperBadge;
+			sourceTree = "<group>";
+		};
+		1B27903F1540FF0A0096FB10 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1B2790401540FF0A0096FB10 /* SuperBadge-Info.plist */,
+				1B2790411540FF0A0096FB10 /* InfoPlist.strings */,
+				1B2790441540FF0A0096FB10 /* main.m */,
+				1B2790461540FF0A0096FB10 /* SuperBadge-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1B2790331540FF0A0096FB10 /* SuperBadge */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1B2790521540FF0B0096FB10 /* Build configuration list for PBXNativeTarget "SuperBadge" */;
+			buildPhases = (
+				1B2790301540FF0A0096FB10 /* Sources */,
+				1B2790311540FF0A0096FB10 /* Frameworks */,
+				1B2790321540FF0A0096FB10 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SuperBadge;
+			productName = SuperBadge;
+			productReference = 1B2790341540FF0A0096FB10 /* SuperBadge.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1B27902B1540FF0A0096FB10 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = 1B27902E1540FF0A0096FB10 /* Build configuration list for PBXProject "SuperBadge" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 1B2790291540FF0A0096FB10;
+			productRefGroup = 1B2790351540FF0A0096FB10 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1B2790331540FF0A0096FB10 /* SuperBadge */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1B2790321540FF0A0096FB10 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B2790431540FF0A0096FB10 /* InfoPlist.strings in Resources */,
+				1B27904F1540FF0B0096FB10 /* ViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1B2790301540FF0A0096FB10 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B2790451540FF0A0096FB10 /* main.m in Sources */,
+				1B2790491540FF0A0096FB10 /* AppDelegate.m in Sources */,
+				1B27904C1540FF0B0096FB10 /* ViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1B2790411540FF0A0096FB10 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1B2790421540FF0A0096FB10 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		1B27904D1540FF0B0096FB10 /* ViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1B27904E1540FF0B0096FB10 /* en */,
+			);
+			name = ViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1B2790501540FF0B0096FB10 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		1B2790511540FF0B0096FB10 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1B2790531540FF0B0096FB10 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SuperBadge/SuperBadge-Prefix.pch";
+				INFOPLIST_FILE = "SuperBadge/SuperBadge-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		1B2790541540FF0B0096FB10 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SuperBadge/SuperBadge-Prefix.pch";
+				INFOPLIST_FILE = "SuperBadge/SuperBadge-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1B27902E1540FF0A0096FB10 /* Build configuration list for PBXProject "SuperBadge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1B2790501540FF0B0096FB10 /* Debug */,
+				1B2790511540FF0B0096FB10 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1B2790521540FF0B0096FB10 /* Build configuration list for PBXNativeTarget "SuperBadge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1B2790531540FF0B0096FB10 /* Debug */,
+				1B2790541540FF0B0096FB10 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1B27902B1540FF0A0096FB10 /* Project object */;
+}
