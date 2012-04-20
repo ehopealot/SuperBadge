@@ -55,8 +55,7 @@
 		1B2790591540FFE50096FB10 = {
 			isa = PBXGroup;
 			children = (
-				1B2790851541001F0096FB10 /* SuperBadge.h */,
-				1B2790861541001F0096FB10 /* SuperBadge.m */,
+				1B27908A15410C6D0096FB10 /* SuperBadge */,
 				1B27906E1540FFE50096FB10 /* Example */,
 				1B2790671540FFE50096FB10 /* Frameworks */,
 				1B2790651540FFE50096FB10 /* Products */,
@@ -104,6 +103,15 @@
 				1B2790761540FFE50096FB10 /* Example-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1B27908A15410C6D0096FB10 /* SuperBadge */ = {
+			isa = PBXGroup;
+			children = (
+				1B2790851541001F0096FB10 /* SuperBadge.h */,
+				1B2790861541001F0096FB10 /* SuperBadge.m */,
+			);
+			name = SuperBadge;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -252,6 +260,7 @@
 				GCC_PREFIX_HEADER = "Example/Example-Prefix.pch";
 				INFOPLIST_FILE = "Example/Example-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -263,6 +272,7 @@
 				GCC_PREFIX_HEADER = "Example/Example-Prefix.pch";
 				INFOPLIST_FILE = "Example/Example-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
