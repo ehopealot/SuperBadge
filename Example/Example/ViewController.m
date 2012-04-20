@@ -24,11 +24,14 @@
     largeCircleBadge.text = @"1";
     largeCircleBadge.badgeBackgroundColor = [UIColor orangeColor];
     largeCircleBadge.badgeBorderColor = [UIColor purpleColor];
-    smallRectBadge.text = @"123456789";
-    largeRectBadge.text = @"123456789";
+    smallRectBadge.text = @"12";
+    largeRectBadge.text = @"123";
     hugeBadge.text = @"Really Long Text in this Badge";
     hugeBadge.badgeBorderColor = [UIColor greenColor];
     hugeBadge.badgeBackgroundColor = [UIColor magentaColor];
+    hugeBadge.frame = CGRectMake(hugeBadge.frame.origin.x,
+                                 hugeBadge.frame.origin.y,
+                                 90,90);
 }
 
 - (void)viewDidUnload

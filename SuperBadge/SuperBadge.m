@@ -27,7 +27,6 @@
     if (self) {
         // Initialization code
         self.clipsToBounds = YES;
-        self.layer.cornerRadius = self.frame.size.height/2;
         self.textAlignment = UITextAlignmentCenter;
     }
     return self;
@@ -76,7 +75,6 @@
 @implementation SuperBadge
 {
     SuperBadgeLabel *badge;
-    CGFloat originalWidth;
 }
 
 @synthesize badgeBackgroundColor, badgeBorderColor, hasBorder, hasShadow, hasGloss,
@@ -124,8 +122,8 @@ badgeTextColor;
     badge.hasGloss = hasGloss;
     badge.layer.borderWidth = hasBorder ? MAX(1.0f, floorf(self.frame.size.height/10)) : 0.0f;
     badge.layer.borderColor = badgeBorderColor.CGColor;
+    badge.layer.cornerRadius = self.frame.size.height/2;
 //
-    originalWidth = self.frame.size.height;
     self.backgroundColor = [UIColor clearColor];
     self.layer.cornerRadius = self.frame.size.width/2;
     self.clipsToBounds = NO;
@@ -190,7 +188,8 @@ badgeTextColor;
 - (void)setFrame:(CGRect)frame
 {
     [super setFrame:frame];
-    badge.frame = self.bounds;
+   /* badge.frame = self.bounds;*/
+    [self setText:self.text ? self.text : @""];
     [self setUp];
 }
 
@@ -200,32 +199,32 @@ badgeTextColor;
 
     [badge setText:text];
     
-    CGSize constrainingSize = CGSizeMake(MAXFLOAT, MAXFLOAT);
-    CGSize textSize;
-    
-    // Determines what size the label needs to be based on the constraint
-    // that the text in the label should be 70% the height of the badge
-    for (int i = 300; i > 5; i--){
-        badge.font = [UIFont boldSystemFontOfSize:i];
-        textSize = [badge.text sizeWithFont:badge.font constrainedToSize:constrainingSize
-                                lineBreakMode:UILineBreakModeWordWrap];
-        if (textSize.height <= badge.frame.size.height*.7f){
-            break;
-        }
-    }
+
     // If there's just one letter in the badge display
     // as a circle
     if (text.length <= 1){
-        myFrame.size.width = originalWidth;
+        myFrame.size.width = myFrame.size.height;
     } else {
-        myFrame.size.width = textSize.width + originalWidth;
+        CGSize constrainingSize = CGSizeMake(MAXFLOAT, MAXFLOAT);
+        CGSize textSize;
+        
+        // Determines what size the label needs to be based on the constraint
+        // that the text in the label should be 70% the height of the badge
+        for (int i = 300; i > 5; i--){
+            badge.font = [UIFont boldSystemFontOfSize:i];
+            textSize = [badge.text sizeWithFont:badge.font constrainedToSize:constrainingSize
+                                  lineBreakMode:UILineBreakModeWordWrap];
+            if (textSize.height <= badge.frame.size.height*.7f){
+                break;
+            }
+        }
+        myFrame.size.width = textSize.width + myFrame.size.height*.7f;
     }
-    self.frame = myFrame;
+    [super setFrame:myFrame];
     // Adjust the shadow to fit the new frame
     UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:self.layer.bounds cornerRadius:self.layer.cornerRadius];
     self.layer.shadowPath = path.CGPath;
     badge.frame = self.bounds;
-
 }
 
 @end
