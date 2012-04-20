@@ -27,13 +27,8 @@
     if (self) {
         // Initialization code
         self.clipsToBounds = YES;
-        self.backgroundColor = [UIColor redColor];
-        self.textColor = [UIColor whiteColor];
-        self.textAlignment = UITextAlignmentCenter;
-        self.layer.borderColor = [UIColor whiteColor].CGColor;
-        self.layer.borderWidth = self.frame.size.height/10.0f;
         self.layer.cornerRadius = self.frame.size.height/2;
-        hasGloss = YES;
+        self.textAlignment = UITextAlignmentCenter;
     }
     return self;
 }
@@ -74,6 +69,7 @@
 @interface SuperBadge()
 
 - (void) setUp;
+- (void) setDefaults;
 
 @end
 
@@ -83,7 +79,8 @@
     CGFloat originalWidth;
 }
 
-@synthesize badgeBackgroundColor, badgeBorderColor, hasBorder, hasShadow, hasGloss;
+@synthesize badgeBackgroundColor, badgeBorderColor, hasBorder, hasShadow, hasGloss,
+badgeTextColor;
 
 
 - (id)initWithFrame:(CGRect)frame andText:(NSString*)text
@@ -99,15 +96,35 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        [self setDefaults];
         [self setUp];
     }
     return self;
 }
 
+- (void)setDefaults
+{
+    badgeTextColor = [UIColor whiteColor];
+    hasGloss = YES;
+    hasBorder = YES;
+    hasShadow = YES;
+    badgeBorderColor = [UIColor whiteColor];
+    badgeBackgroundColor = [UIColor redColor];
+
+}
+
 - (void)setUp
 {
-    badge = [[SuperBadgeLabel alloc] initWithFrame:self.bounds];
-    [self addSubview:badge];
+    if (!badge){
+        badge = [[SuperBadgeLabel alloc] initWithFrame:self.bounds];
+        [self addSubview:badge];
+    }
+    badge.backgroundColor = badgeBackgroundColor;
+    badge.textColor = badgeTextColor;
+    badge.hasGloss = hasGloss;
+    badge.layer.borderWidth = hasBorder ? MAX(1.0f, floorf(self.frame.size.height/10)) : 0.0f;
+    badge.layer.borderColor = badgeBorderColor.CGColor;
+//
     originalWidth = self.frame.size.height;
     self.backgroundColor = [UIColor clearColor];
     self.layer.cornerRadius = self.frame.size.width/2;
@@ -153,13 +170,28 @@
     [badge setNeedsDisplay];
 }
 
+- (void)setBadgeTextColor:(UIColor *)theBadgeTextColor
+{
+    badgeTextColor = theBadgeTextColor;
+    badge.textColor = badgeTextColor;
+}
+
+
 - (void)awakeFromNib
 {
+    [self setDefaults];
     [self setUp];
 }
 
 - (NSString*) text{
     return badge.text;
+}
+
+- (void)setFrame:(CGRect)frame
+{
+    [super setFrame:frame];
+    badge.frame = self.bounds;
+    [self setUp];
 }
 
 - (void)setText:(NSString *)text
