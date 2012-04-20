@@ -129,7 +129,7 @@ badgeTextColor;
     self.clipsToBounds = NO;
     self.layer.shadowRadius = MAX(1.0f, ceilf(self.frame.size.height/20.0f));
     self.layer.shadowColor = [UIColor blackColor].CGColor;
-    self.layer.shadowOpacity = 0.5f;
+    self.layer.shadowOpacity = hasShadow ? 0.5f : 0.0f;
     self.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
     self.userInteractionEnabled = NO;
     self.layer.shouldRasterize = YES;
