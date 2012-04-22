@@ -117,23 +117,24 @@ badgeTextColor;
     [self.layer addSublayer:borderLayer];
     [self.layer addSublayer:gradient];
     self.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
+    
+    self.textColor = badgeTextColor;
+    self.layer.backgroundColor = badgeBackgroundColor.CGColor;
+    self.layer.shadowOpacity = 0.5f;
+    borderLayer.borderColor = badgeBorderColor.CGColor;
 }
 
 
 - (void)setUp
 {
-    self.textColor = badgeTextColor;
-    self.layer.backgroundColor = badgeBackgroundColor.CGColor;
     self.layer.cornerRadius = self.frame.size.height/2;
     self.layer.shadowRadius = ceilf(gradient.frame.size.height/20.0f);
-    self.layer.shadowOpacity = hasShadow ? 0.5f : 0.0f;
     UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:gradient.frame cornerRadius:self.layer.cornerRadius];
     self.layer.shadowPath = path.CGPath;
     
     borderLayer.borderWidth = hasBorder ? MAX(2.0f, floorf(self.frame.size.height/10)) : 0.0f;
     borderLayer.frame = hasBorder ? CGRectInset(self.bounds, 1 - borderLayer.borderWidth, 
                                                 1 - borderLayer.borderWidth) : self.bounds;
-    borderLayer.borderColor = badgeBorderColor.CGColor;
     borderLayer.cornerRadius = borderLayer.frame.size.height/2;
     
     gradient.frame = borderLayer.frame;
