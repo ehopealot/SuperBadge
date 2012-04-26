@@ -125,13 +125,15 @@ badgeTextColor;
 
 - (void)setUp
 {
+    [CATransaction begin];
+    [CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions];
     self.layer.cornerRadius = self.frame.size.height/2;
     self.layer.shadowRadius = ceilf(gradient.frame.size.height/20.0f);
     UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:gradient.frame cornerRadius:self.layer.cornerRadius];
     self.layer.shadowPath = path.CGPath;
     
     borderLayer.borderWidth = hasBorder ? MAX(2.0f, floorf(self.frame.size.height/10)) : 0.0f;
-    borderLayer.bounds = hasBorder ? CGRectInset(self.bounds, 1 - borderLayer.borderWidth, 
+    borderLayer.frame = hasBorder ? CGRectInset(self.bounds, 1 - borderLayer.borderWidth, 
                                                 1 - borderLayer.borderWidth) : self.bounds;
     borderLayer.cornerRadius = borderLayer.frame.size.height/2;
     borderLayer.position = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
@@ -139,6 +141,7 @@ badgeTextColor;
     gradient.cornerRadius = borderLayer.cornerRadius;
     gradient.position = borderLayer.position;
     [gradient setNeedsDisplay];
+    [CATransaction commit];
 }
 
 - (void)setBadgeBorderColor:(UIColor *)theBorderColor
