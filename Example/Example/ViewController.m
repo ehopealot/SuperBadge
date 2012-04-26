@@ -47,8 +47,8 @@
     [UIView animateWithDuration:.5 delay:2.0 options:0 animations:^{
         largeCircleBadge.center = CGPointMake(largeCircleBadge.center.x+50, 
                                               largeCircleBadge.center.y+50);
-        largeRectBadge.text = @"123456";
     } completion:^(BOOL finished) {
+        largeRectBadge.text = @"123456";
     }];
     
 
@@ -56,7 +56,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return NO;
+    return YES;
 }
 
 @end

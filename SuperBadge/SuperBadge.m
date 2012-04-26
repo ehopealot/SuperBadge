@@ -20,7 +20,6 @@
 
 @synthesize hasGloss;
 
-
 - (void)drawLayer:(CALayer *)layer inContext:(CGContextRef)currentContext
 {
     if (hasGloss){
@@ -43,7 +42,6 @@
         CGColorSpaceRelease(rgbColorspace); 
     }
 }
-
 
 @end
 
@@ -133,12 +131,13 @@ badgeTextColor;
     self.layer.shadowPath = path.CGPath;
     
     borderLayer.borderWidth = hasBorder ? MAX(2.0f, floorf(self.frame.size.height/10)) : 0.0f;
-    borderLayer.frame = hasBorder ? CGRectInset(self.bounds, 1 - borderLayer.borderWidth, 
+    borderLayer.bounds = hasBorder ? CGRectInset(self.bounds, 1 - borderLayer.borderWidth, 
                                                 1 - borderLayer.borderWidth) : self.bounds;
     borderLayer.cornerRadius = borderLayer.frame.size.height/2;
-    
-    gradient.frame = borderLayer.frame;
+    borderLayer.position = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
+    gradient.frame = borderLayer.bounds;
     gradient.cornerRadius = borderLayer.cornerRadius;
+    gradient.position = borderLayer.position;
     [gradient setNeedsDisplay];
 }
 
@@ -192,6 +191,11 @@ badgeTextColor;
    /* badge.frame = self.bounds;*/
     [self setText:self.text ? self.text : @""];
     [self setUp];
+}
+
+- (void)setText:(NSString *)text withAnimationDuration:(CGFloat)duration
+{
+    
 }
 
 - (void)setText:(NSString *)text
