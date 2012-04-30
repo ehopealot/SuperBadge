@@ -89,6 +89,8 @@ badgeTextColor;
     hasGloss = YES;
     hasBorder = YES;
     hasShadow = YES;
+    self.adjustsFontSizeToFitWidth = NO;
+    self.contentMode = UIViewContentModeLeft;
     badgeBorderColor = [UIColor whiteColor];
     badgeBackgroundColor = [UIColor redColor];
     
@@ -126,7 +128,7 @@ badgeTextColor;
 - (void)setUp
 {
     [CATransaction begin];
-    [CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions];
+    //[CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions];
     self.layer.cornerRadius = self.frame.size.height/2;
     self.layer.shadowRadius = ceilf(gradient.frame.size.height/20.0f);
     UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:gradient.frame cornerRadius:self.layer.cornerRadius];
@@ -196,11 +198,6 @@ badgeTextColor;
     [self setUp];
 }
 
-- (void)setText:(NSString *)text withAnimationDuration:(CGFloat)duration
-{
-    
-}
-
 - (void)setText:(NSString *)text
 {
     CGRect myFrame = self.frame;
@@ -230,7 +227,9 @@ badgeTextColor;
             myFrame.size.width = textSize.width + myFrame.size.height*.7f;
         }
     }
-    [super setFrame:myFrame];
+    [UIView animateWithDuration:.17 animations:^{
+        [super setFrame:myFrame];
+    }];
     // Adjust the shadow to fit the new frame
     [self setUp];
 }
