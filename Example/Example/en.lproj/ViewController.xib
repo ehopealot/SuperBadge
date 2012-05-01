@@ -106,7 +106,6 @@
 								<string key="NSFrame">{{180, -20}, {40, 40}}</string>
 								<reference key="NSSuperview" ref="288243688"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<object class="NSColor" key="IBUIBackgroundColor">
 									<int key="NSColorSpace">3</int>
@@ -161,26 +160,10 @@
 					<object class="IBUIView" id="704654032">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">300</int>
-						<array class="NSMutableArray" key="NSSubviews">
-							<object class="IBUIView" id="328743228">
-								<reference key="NSNextResponder" ref="704654032"/>
-								<int key="NSvFlags">274</int>
-								<string key="NSFrame">{{175, -25}, {50, 50}}</string>
-								<reference key="NSSuperview" ref="704654032"/>
-								<reference key="NSWindow"/>
-								<string key="NSReuseIdentifierKey">_NS:9</string>
-								<object class="NSColor" key="IBUIBackgroundColor">
-									<int key="NSColorSpace">3</int>
-									<bytes key="NSWhite">MQA</bytes>
-									<reference key="NSCustomColorSpace" ref="838393566"/>
-								</object>
-								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-							</object>
-						</array>
 						<string key="NSFrame">{{43, 727}, {206, 65}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="328743228"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
@@ -245,14 +228,6 @@
 						<reference key="destination" ref="269418058"/>
 					</object>
 					<int key="connectionID">13</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">hugeBadge</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="328743228"/>
-					</object>
-					<int key="connectionID">28</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -335,15 +310,8 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">23</int>
 						<reference key="object" ref="704654032"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="328743228"/>
-						</array>
+						<array class="NSMutableArray" key="children"/>
 						<reference key="parent" ref="766721923"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">24</int>
-						<reference key="object" ref="328743228"/>
-						<reference key="parent" ref="704654032"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">9</int>
@@ -368,8 +336,6 @@
 				<string key="21.CustomClassName">SuperBadge</string>
 				<string key="21.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="23.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="24.CustomClassName">SuperBadge</string>
-				<string key="24.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="8.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="9.CustomClassName">SuperBadge</string>
 				<string key="9.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>

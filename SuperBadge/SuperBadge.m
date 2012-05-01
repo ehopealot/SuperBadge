@@ -127,23 +127,27 @@ badgeTextColor;
 
 - (void)setUp
 {
-    [CATransaction begin];
-    //[CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions];
+    CGRect newBorderLayerFrame = hasBorder ? CGRectInset(self.bounds, 1 - borderLayer.borderWidth, 1 - borderLayer.borderWidth) : self.bounds;
+    borderLayer.bounds = newBorderLayerFrame;
+    borderLayer.position = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
     self.layer.cornerRadius = self.frame.size.height/2;
     self.layer.shadowRadius = ceilf(gradient.frame.size.height/20.0f);
-    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:gradient.frame cornerRadius:self.layer.cornerRadius];
-    self.layer.shadowPath = path.CGPath;
+    CABasicAnimation *shadowPathAnimation = [CABasicAnimation animationWithKeyPath:@"shadowPath"];
+    shadowPathAnimation.duration = .15;
+    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:borderLayer.frame cornerRadius:self.layer.cornerRadius];
+    shadowPathAnimation.fromValue = (id)self.layer.shadowPath;
+    shadowPathAnimation.toValue = (id)path.CGPath;
+    [self.layer addAnimation:shadowPathAnimation forKey:@"shadowPath"];
     
+    
+    self.layer.shadowPath = path.CGPath;
     borderLayer.borderWidth = hasBorder ? MAX(2.0f, floorf(self.frame.size.height/10)) : 0.0f;
-    borderLayer.frame = hasBorder ? CGRectInset(self.bounds, 1 - borderLayer.borderWidth, 
-                                                1 - borderLayer.borderWidth) : self.bounds;
     borderLayer.cornerRadius = borderLayer.frame.size.height/2;
-    borderLayer.position = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
     gradient.frame = borderLayer.bounds;
     gradient.cornerRadius = borderLayer.cornerRadius;
     gradient.position = borderLayer.position;
     [gradient setNeedsDisplay];
-    [CATransaction commit];
+
 }
 
 - (void)setBadgeBorderColor:(UIColor *)theBorderColor
@@ -227,7 +231,7 @@ badgeTextColor;
             myFrame.size.width = textSize.width + myFrame.size.height*.7f;
         }
     }
-    [UIView animateWithDuration:.17 animations:^{
+    [UIView animateWithDuration:.15 animations:^{
         [super setFrame:myFrame];
     }];
     // Adjust the shadow to fit the new frame

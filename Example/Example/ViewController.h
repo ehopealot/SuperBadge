@@ -17,6 +17,8 @@
     IBOutlet SuperBadge *largeRectBadge;
     IBOutlet SuperBadge *hugeBadge;
     
+    int numberInBadge;
+    
 }
 
 

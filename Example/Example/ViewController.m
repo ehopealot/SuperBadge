@@ -24,7 +24,7 @@
     largeCircleBadge.text = @"1";
     largeCircleBadge.badgeBackgroundColor = [UIColor orangeColor];
     largeCircleBadge.badgeBorderColor = [UIColor purpleColor];
-    smallRectBadge.text = @"12";
+    smallRectBadge.text = @"0";
     largeRectBadge.text = @"123";
     largeRectBadge.badgeBorderColor = [UIColor blackColor];
     hugeBadge.text = @"Really Long Text in this Badge";
@@ -41,6 +41,11 @@
     // Release any retained subviews of the main view.
 }
 
+- (void)incrementNumberInSmallBadge{
+    smallRectBadge.text = [NSString stringWithFormat:@"%i", ++numberInBadge];
+    [self performSelector:@selector(incrementNumberInSmallBadge) withObject:nil afterDelay:.25];
+}
+
 - (void)viewDidAppear:(BOOL)animated
 {
     largeRectBadge.hasShadow = NO;
@@ -49,8 +54,11 @@
                                               largeCircleBadge.center.y+50);
     } completion:^(BOOL finished) {
         largeRectBadge.text = @"123456";
+        smallCircleBadge.text = @"123";
+        [self incrementNumberInSmallBadge];
     }];
     
+
 
 }
 
