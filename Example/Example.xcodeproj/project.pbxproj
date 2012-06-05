@@ -14,10 +14,11 @@
 		1B2790751540FFE50096FB10 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B2790741540FFE50096FB10 /* main.m */; };
 		1B2790791540FFE50096FB10 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B2790781540FFE50096FB10 /* AppDelegate.m */; };
 		1B27907C1540FFE50096FB10 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B27907B1540FFE50096FB10 /* ViewController.m */; };
-		1B27907F1540FFE50096FB10 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B27907D1540FFE50096FB10 /* ViewController.xib */; };
+		1B27907F1540FFE50096FB10 /* ViewController~iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B27907D1540FFE50096FB10 /* ViewController~iPad.xib */; };
 		1B2790871541001F0096FB10 /* SuperBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B2790861541001F0096FB10 /* SuperBadge.m */; };
 		1B279089154102550096FB10 /* cat.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B279088154102550096FB10 /* cat.jpg */; };
 		1B2790901541BEAB0096FB10 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B27908F1541BEAB0096FB10 /* QuartzCore.framework */; };
+		57E9DB75157EB62A0079CBDF /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57E9DB73157EB62A0079CBDF /* ViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,11 +34,12 @@
 		1B2790781540FFE50096FB10 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		1B27907A1540FFE50096FB10 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		1B27907B1540FFE50096FB10 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		1B27907E1540FFE50096FB10 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		1B27907E1540FFE50096FB10 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "en.lproj/ViewController~iPad.xib"; sourceTree = "<group>"; };
 		1B2790851541001F0096FB10 /* SuperBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SuperBadge.h; path = ../SuperBadge/SuperBadge.h; sourceTree = "<group>"; };
 		1B2790861541001F0096FB10 /* SuperBadge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SuperBadge.m; path = ../SuperBadge/SuperBadge.m; sourceTree = "<group>"; };
 		1B279088154102550096FB10 /* cat.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cat.jpg; sourceTree = "<group>"; };
 		1B27908F1541BEAB0096FB10 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		57E9DB74157EB62A0079CBDF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,8 +94,9 @@
 				1B2790781540FFE50096FB10 /* AppDelegate.m */,
 				1B27907A1540FFE50096FB10 /* ViewController.h */,
 				1B27907B1540FFE50096FB10 /* ViewController.m */,
-				1B27907D1540FFE50096FB10 /* ViewController.xib */,
+				1B27907D1540FFE50096FB10 /* ViewController~iPad.xib */,
 				1B27906F1540FFE50096FB10 /* Supporting Files */,
+				57E9DB73157EB62A0079CBDF /* ViewController.xib */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -169,8 +172,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B2790731540FFE50096FB10 /* InfoPlist.strings in Resources */,
-				1B27907F1540FFE50096FB10 /* ViewController.xib in Resources */,
+				1B27907F1540FFE50096FB10 /* ViewController~iPad.xib in Resources */,
 				1B279089154102550096FB10 /* cat.jpg in Resources */,
+				57E9DB75157EB62A0079CBDF /* ViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,10 +203,18 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		1B27907D1540FFE50096FB10 /* ViewController.xib */ = {
+		1B27907D1540FFE50096FB10 /* ViewController~iPad.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				1B27907E1540FFE50096FB10 /* en */,
+			);
+			name = "ViewController~iPad.xib";
+			sourceTree = "<group>";
+		};
+		57E9DB73157EB62A0079CBDF /* ViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				57E9DB74157EB62A0079CBDF /* en */,
 			);
 			name = ViewController.xib;
 			sourceTree = "<group>";
@@ -264,7 +276,7 @@
 				GCC_PREFIX_HEADER = "Example/Example-Prefix.pch";
 				INFOPLIST_FILE = "Example/Example-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -276,7 +288,7 @@
 				GCC_PREFIX_HEADER = "Example/Example-Prefix.pch";
 				INFOPLIST_FILE = "Example/Example-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -300,6 +312,7 @@
 				1B2790841540FFE50096FB10 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
